@@ -2,6 +2,7 @@
 
 }
 
+
 body {
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
@@ -9,7 +10,7 @@ body {
     padding: 0;
     display: grid;
     grid-template-columns: 300px 1fr;
-    grid-template-rows: 200px 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas: 
         "sidebar header"
         "sidebar content";
@@ -17,19 +18,235 @@ body {
 
 .sidebar {
     grid-area: sidebar;
-    background-color: #333;
+    background-color: #1886ec;
     color: #fff;
     padding: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+    align-items: start;
+    justify-content: start;
+    
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: large;
+    display: flex;
+    gap : 10px;
 }
 
 .header {
     grid-area: header;
-    background-color: #da1111;
-    color: #fff;
+    background-color: white;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
     padding: 10px;
+    gap: 15px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "top"
+        "bottom";
+}
+
+.header .top {
+    display: grid;
+    align-items: center;
+    grid-area: top;
+    gap: 10px;
+    justify-content: space-between;
+    grid-template-columns:  auto 1fr 2fr auto auto auto;
+}
+
+.top input {
+    font-size: large;
+    text-align: center;
+    height: 20px;
+    background-color:lightgrey;
+    color: black;
+    border: 0;
+    border-radius: 25px;
+}
+
+.header .bottom {
+    grid-area: bottom;
+    display: grid;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    grid-template-columns:  auto auto 1fr auto auto auto;
+    button{
+        background-color: #488fd1;
+        color: white;
+        font-weight: bold;
+        width: 100px;
+        height : 30px;
+        border: 0;
+        border-radius: 25px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+}
+
+.topname {
+    font-size: small;
+    font-weight: bold;
+    padding-bottom: 3px;
 }
 
 .content {
     grid-area: content;
     padding: 10px;
+    display: grid;
+    gap: 10px;
+    justify-content: start;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "projects announcements"
+        "projects trending";
+}
+
+.projects {
+    grid-area: projects;
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.announcements {
+    grid-area: announcements;
+    
+    width: 300px;
+    height: 320px;
+    > h3{
+        margin: 5px;
+    }
+}
+
+.announcebox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* height: 260px; */
+    :first-child {
+        border-top: 0;
+    }
+}
+
+.announcebox > div {
+    background-color: #fff;
+    padding: 10px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+    /* width: 300px; */
+    height: 55px;
+    flex: 0 1 auto;
+    border-top: #1886ec 1px solid;
+    /* display: grid;   */
+    > * {
+        margin: 5px;
+    }
+   
+}
+
+.trending {
+    grid-area: trending;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* width: 300px; */
+    /* height: 200px; */
+}
+
+.trender {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+    width: 175px;
+    height: 55px;
+    flex: 0 1 auto;
+    display: grid;  
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "image title"
+        "image description";
+}
+
+.image {
+    grid-area: image;
+    width: 50px;
+    height: 50px;
+    /* background-color: lightgrey; */
+    border-radius: 10px;
+}
+
+.title {
+    grid-area: title;
+    font-size: large;
+    font-weight: bold;
+}
+
+.description {
+    grid-area: description;
+}
+
+.projectbox {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 200px;
+    flex: 0 1 auto;
+    border-left: 10px solid orange;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 150px 50px;
+    grid-template-areas: 
+        "textarea textarea textarea textarea textarea textarea"
+        ". . . icon1 icon2 icon3";
+}
+
+.textarea {
+    grid-area: textarea;
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea > * {
+    margin: 5px;
+}
+
+.icon1 {
+    grid-area: icon1;
+    width: 35px;
+}
+
+.icon2 {
+    grid-area: icon2;
+    width: 35px;
+    
+}
+
+.icon3 {
+    grid-area: icon3;
+    width: 35px;
+    
 }
